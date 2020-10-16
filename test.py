@@ -9,7 +9,7 @@ def main():
     for i in range(pageNumber):
         page = pdfReader.getPage(i)
         content = page.extractText()
-        test = re.sub(r'[^a-zA-Z ]+', '', content)
+        test = re.sub(r'[^a-zA-Z0-9 ]+', '', content)
         words = test.split()
         wordcount = wordcount + len(words)
     print(test)
