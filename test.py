@@ -1,8 +1,11 @@
 import PyPDF2
 import re
+from tkinter import *
+from tkinter import filedialog as fd
 
 def main():
-    file = "C:/Users/janni/Desktop/pdfwordcounter/pdfwordcounter/test.pdf"
+    root  = Tk()
+    file = fd.askopenfilename(parent=root, title='Choose PDF')
     pdfReader = PyPDF2.PdfFileReader(file)
     pageNumber = pdfReader.getNumPages()
     wordcount = 0 
@@ -12,7 +15,6 @@ def main():
         test = re.sub(r'[^a-zA-Z0-9 ]+', '', content)
         words = test.split()
         wordcount = wordcount + len(words)
-    print(test)
     print(wordcount)
 
 main()
