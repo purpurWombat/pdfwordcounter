@@ -1,6 +1,5 @@
 import sys
 
-
 from collections import Counter
 def word_count(filename):
     with open(filename) as f:
