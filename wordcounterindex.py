@@ -1,4 +1,4 @@
-import sys
+'''import sys
 
 from collections import Counter
 def word_count(filename):
@@ -19,4 +19,43 @@ l = user_str.split()
 d = {}
 for j in l:
     d[j] = d.get(j, 0)+1
-print(d)
+print(d)'''
+
+
+anzworter = 0
+pathDokument = "test.pdf"
+
+def getAnzWoerter(datei):
+    woerter = 0
+    for line in datei:
+        line = line.split()
+        counter = len(line)
+        woerter += counter
+    return woerter
+
+
+try:
+    f = open(pathDokument, 'r')
+    anzworter = getAnzWoerter(f)
+except UnicodeDecodeError:
+    anzworter = 0
+    try:
+       f = open(pathDokument, 'r', encoding='latin-1')
+       anzworter = getAnzWoerter(f)  
+    except UnicodeDecodeError:
+        anzworter = 0
+        try:
+            f = open(pathDokument, 'r', encoding='latin2')
+            anzworter = getAnzWoerter(f)
+        except:
+            anzworter = 0
+            try:
+                f = open(pathDokument, 'r', encoding='utf-8')
+                anzworter = getAnzWoerter(f)
+            except UnicodeDecodeError:
+                print("Dateiformat passt nicht")
+
+
+
+
+print("Wörter:", anzworter)
