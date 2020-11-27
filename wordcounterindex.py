@@ -32,11 +32,9 @@ anzworter = 0
 def getAnzWoerter(datei):
     woerter = 0
     for line in datei:
-        print(line)
-        line = re.sub(r'[^a-zA-Z0-9 ]+', '', line)
-        print(line)
-        line = line.split()
-        print(line)
+        #linie wird aus datei gelesen
+        line = re.sub(r'[^a-zA-Z0-9 ]+', '', line)  #die linie iwird nach wörtern gesucht und als str gespeichert
+        line = line.split()                          #der linestr wird geteil und als liste gespeichert
         counter = len(line)
         woerter += counter
     return woerter
