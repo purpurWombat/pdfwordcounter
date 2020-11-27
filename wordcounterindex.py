@@ -20,15 +20,23 @@ d = {}
 for j in l:
     d[j] = d.get(j, 0)+1
 print(d)'''
+import re
+from tkinter import *
+from tkinter import filedialog as fd
 
-
+root  = Tk()
+pathDokument = fd.askopenfilename(parent=root, title='Wähle eine Datei')
 anzworter = 0
-pathDokument = "test.pdf"
+#pathDokument = "test.pdf"
 
 def getAnzWoerter(datei):
     woerter = 0
     for line in datei:
+        print(line)
+        line = re.sub(r'[^a-zA-Z0-9 ]+', '', line)
+        print(line)
         line = line.split()
+        print(line)
         counter = len(line)
         woerter += counter
     return woerter
